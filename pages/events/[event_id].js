@@ -1,8 +1,14 @@
-import { useRouter } from 'next/router';    
+import { useRouter } from 'next/router';   
+import { getEventById } from '@/dummy-data'; 
 
 const EventInfo = () => {
     const router = useRouter();
     const eventId = router.query.event_id;
+    const event = getEventById(eventId);
+
+    if(!event){
+        return <p>No Event Found</p>
+    }
     
     return (
         <div>
